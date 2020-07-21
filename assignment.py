@@ -28,6 +28,7 @@ plt.plot(datelist[:30], inrval[:30])
 
 plt.xlabel('Dates')
 plt.ylabel('Exchange rates EUR to INR')
+plt.title('Exchange rates EUR to INR')
 
 plt.show()
 
@@ -41,7 +42,8 @@ gbpval = list(gbp)
 plt.plot(datelist[:30], gbpval[:30])
 
 plt.xlabel('Dates')
-plt.ylabel('Exchange rates EUR to INR')
+plt.ylabel('Exchange rates EUR to GBP')
+plt.title('Exchange rates EUR to GBP')
 
 
 plt.show()
@@ -57,10 +59,13 @@ rates = latest['rates']
 gbp = rates['GBP']
 inr = rates['INR']
 
-plt.plot(datelist[:30], inrval[:30])
-plt.plot(datelist[:30], gbpval[:30])
+plt.plot(datelist[:30], inrval[:30], label="EURtoINR")
+plt.plot(datelist[:30], gbpval[:30], label="EURtoGBP")
 plt.xlabel('Dates')
 plt.ylabel('Exchange rates EUR to INR')
+plt.title('Exchange rates of EUR to INR and GBP')
+plt.legend()
+
 str1 = "Current value of EUR to INR is " + str(inr)
 str2 = "Current value of EUR to GBP is " + str(gbp)
 plt.text(3, 8, str1)
@@ -92,7 +97,7 @@ plt.plot(datelist, inrval)
 
 plt.xlabel('Dates')
 plt.ylabel('Exchange rates EUR to INR')
-
+plt.title("Exchange rates from REST endpoint")
 plt.show()
 
 #####################################################
