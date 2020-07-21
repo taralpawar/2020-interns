@@ -96,3 +96,40 @@ plt.xlabel('Dates')
 plt.ylabel('Exchange rates EUR to INR')
 
 plt.show()
+
+#####################################################
+############# Feature F-1 ###########################
+#####################################################
+
+
+print("Enter the start date (yyyy/mm/dd)")
+sdate = input()
+print("Enter the end date (yyyy/mm/dd)")
+edate = input()
+
+response = requests.get(
+    "https://api.exchangeratesapi.io/history?start_at={}&end_at={}".format(sdate, edate))
+data = dict(response.json())
+
+data = dict(response.json())
+
+rates = data['rates']
+od = collections.OrderedDict(sorted(rates.items()))
+datelist = list(od.keys())
+
+val = list(rates.values())
+
+df = pd.DataFrame(val, index=datelist)
+
+inr = (df.loc[:, 'INR'])
+inrval = (list(inr))
+gbp = df.loc[:, 'GBP']
+gbpval = list(gbp)
+
+plt.plot(datelist, inrval)
+
+plt.title("Exchange rate of EUR to INR from {} to {}".format(sdate, edate))
+plt.xlabel('Dates')
+plt.ylabel('Exchange rates')
+
+plt.show()
