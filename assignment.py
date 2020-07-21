@@ -66,3 +66,33 @@ str2 = "Current value of EUR to GBP is " + str(gbp)
 plt.text(3, 8, str1)
 plt.text(3, 13, str2)
 plt.show()
+
+#####################################################
+############# Task 4 T-4 ############################
+#####################################################
+
+
+response = requests.get(
+    "https://api.exchangeratesapi.io/history?start_at=2019-01-01&end_at=2019-01-31")
+data = dict(response.json())
+
+rates = data['rates']
+od = collections.OrderedDict(sorted(rates.items()))
+datelist = list(od.keys())
+
+val = list(rates.values())
+
+df = pd.DataFrame(val, index=datelist)
+
+inr = (df.loc[:, 'INR'])
+inrval = (list(inr))
+gbp = df.loc[:, 'GBP']
+gbpval = list(gbp)
+
+plt.plot(datelist, inrval)
+
+
+plt.xlabel('Dates')
+plt.ylabel('Exchange rates EUR to INR')
+
+plt.show()
