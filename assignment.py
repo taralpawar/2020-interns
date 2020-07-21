@@ -30,3 +30,18 @@ plt.xlabel('Dates')
 plt.ylabel('Exchange rates EUR to INR')
 
 plt.show()
+
+#####################################################
+############# Task 2 T-2 ############################
+#####################################################
+
+gbp = df.loc[:, 'GBP']
+gbpval = list(gbp)
+
+plt.plot(datelist[:30], gbpval[:30])
+
+plt.xlabel('Dates')
+plt.ylabel('Exchange rates EUR to INR')
+
+
+plt.show()
